@@ -1,0 +1,24 @@
+AllCops:
+  TargetRubyVersion: 3.2.2
+  Exclude:
+    - "db/**/*"
+    - "config/**/*"
+    - "script/**/*"
+
+Layout/LineLength:
+  Max: 130
+
+Metrics/ModuleLength:
+  Max: 200
+
+Metrics/MethodLength:
+  Max: 100
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/Documentation:
+  Enabled: true
+
+Metrics/AbcSize:
+  Max: 50
