@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :pagiante_params, only: %i[index]
+  before_action :paginate_params, only: %i[index]
 
   def index
     @products = Product.paginate(
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   private
 
   # Define strong parameters for products
-  def pagiante_params
+  def paginate_params
     params.require(%i[page per_page])
     params.permit(%i[page per_page key sort_by sort_order])
 
