@@ -1,24 +1,16 @@
-# README
+# Meeteam
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails application for managing products. The project uses Docker and Docker Compose for containerization.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- Docker
+- Docker Compose
 
-* System dependencies
+## Getting Started
 
-* Configuration
+### Clone the Repository
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+git clone https://github.com/JasonCacante/meeteam.git
+cd meeteam
