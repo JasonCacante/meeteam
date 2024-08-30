@@ -30,5 +30,5 @@ docker-compose dow
 ### Accessing the Application
 The application should now be running at http://localhost:3000
 
-### To test the endpint /products
+### To test the endpoint /products
 http://localhost:3000/products method post (I like to use post because we don't expose the parameters in the url and they good as part of the body)
