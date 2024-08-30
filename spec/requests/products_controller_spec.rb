@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe ProductsController, type: :request do
-  describe 'GET #index' do
+  describe 'POST #index' do
     let(:valid_params) { { page: 1, per_page: 10 } }
     let(:invalid_params) { { page: 0, per_page: 10 } }
 
@@ -16,6 +16,21 @@ RSpec.describe ProductsController, type: :request do
         post '/products', params: valid_params
         expect(JSON.parse(response.body)['table']['records'].size).to eq(10)
       end
+
+      it 'returns a successful response with key parameter' do
+        post '/products', params: valid_params.merge(key: 'name')
+        expect(JSON.parse(response.body)['table']['records'].size).to eq(0)
+      end
+
+      it 'returns a successful response with key parameter' do
+        post '/products', params: valid_params.merge(key: 'laptop')
+        expect(JSON.parse(response.body)['table']['records'].size).to eq(2)
+      end
+
+      it 'returns a successful ordered params' do
+        post '/products', params: valid_params.merge(sort_by: 'created_at', sort_order: 'desc')
+        expect(JSON.parse(response.body)['table']['records'].first['id']).to eq('10'.to_i)
+      end
     end
 
     context 'with invalid params' do
@@ -28,7 +43,7 @@ RSpec.describe ProductsController, type: :request do
   end
 
   describe 'private methods' do
-    describe '#pagiante_params' do
+    describe '#paginate_params' do
       it 'requires page and per_page parameters' do
         expect do
           post '/products', params: { key: 'name' }
